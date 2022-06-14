@@ -8,7 +8,7 @@ vars:
     description: '33 Kit Service'
 
 services:
-  pjskDownload:
+  kit:
     component: fc
     actions:
       pre-deploy:
