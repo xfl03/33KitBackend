@@ -24,7 +24,7 @@ services:
         timeout: 60
         runtime: custom-container
         customContainerConfig:
-          image: registry-internal.cn-hangzhou.aliyuncs.com/xfl03/33kit
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/xfl03/33kit
         codeUri: ./
       triggers:
         - name: httpTrigger
