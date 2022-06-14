@@ -1,0 +1,44 @@
+edition: 1.0.0
+name: 33-kit-backend
+
+vars:
+  region: cn-hangzhou
+  service:
+    name: 33-kit-service
+    description: '33 Kit Service'
+
+services:
+  pjskDownload:
+    component: fc
+    actions:
+      pre-deploy:
+        - component: fc build --use-docker --dockerfile ./code/Dockerfile
+    props:
+      region: ${vars.region}
+      service: ${vars.service}
+      function:
+        name: 33-kit-function
+        description: '33 Kit Function'
+        caPort: 9000
+        memorySize: 256
+        timeout: 60
+        runtime: custom-container
+        customContainerConfig:
+          image: registry.cn-hangzhou.aliyuncs.com/xfl03/33kit
+        codeUri: ./code
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+      customDomains:
+        - domainName: auto
+          protocol: HTTP
+          routeConfigs:
+            - path: /*
+              methods:
+                - GET
+                - POST
