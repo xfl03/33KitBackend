@@ -1,0 +1,3 @@
+kit:
+  captcha:
+    hcaptcha-secret: ${HCAPTCHA_SECRET}

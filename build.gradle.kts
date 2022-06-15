@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
+	kotlin("kapt") version "1.7.0"
 }
 
 group = "me.xfl03"
@@ -21,6 +22,15 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
+	implementation("com.squareup.okhttp3:okhttp:4.10.0")
+	implementation("commons-codec:commons-codec:1.15")
+}
+
+kapt {
+	showProcessorStats = true
+	keepJavacAnnotationProcessors = true
 }
 
 tasks.withType<KotlinCompile> {
@@ -32,4 +42,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.named("compileJava") {
+	inputs.files(tasks.named("processResources"))
 }

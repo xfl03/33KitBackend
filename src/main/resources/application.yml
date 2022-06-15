@@ -1,0 +1,9 @@
+server:
+  port: 9000
+kit:
+  cdn:
+    aliyun-domain: "33.unijzlsx.com"
+    aliyun-key: ${CDN_AUTH_KEY}
+spring:
+  profiles:
+    active: "dev"
