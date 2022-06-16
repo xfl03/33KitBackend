@@ -1,9 +1,8 @@
-package me.xfl03.kit
+package me.xfl03.kit.service
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import me.xfl03.kit.response.HcaptchaVerifyResponse
-import me.xfl03.kit.service.CaptchaService
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,12 +27,12 @@ class CaptchaTests {
     @Test
     fun jacksonReadJson() {
         val json = """
-{
-    "success": true,
-    "credit": false,
-    "hostname": "dummy-key-pass",
-    "challenge_ts": "2022-06-14T19:13:23.758Z"
-}
+            {
+                "success": true,
+                "credit": false,
+                "hostname": "dummy-key-pass",
+                "challenge_ts": "2022-06-14T19:13:23.758Z"
+            }
         """.trimIndent()
         assertDoesNotThrow {
             val obj = mapper.readValue<HcaptchaVerifyResponse>(json)
