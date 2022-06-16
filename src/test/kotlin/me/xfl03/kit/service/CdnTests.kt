@@ -11,15 +11,15 @@ class CdnTests {
     @Test
     fun asciiPathUrl(){
         assert(
-            cdnService.getAliyunCdnUrl("test",1655319593L)
-                    == "https://33.unijzlsx.com/e28eb832bf28580a85696695d6b0193b/62AA2C29/test"
+            cdnService.getAliyunCdnUrl("test",1655361560L)
+                    == "https://example.com/1c40da6d306971341d24eb337c68974d/62AAD018/test"
         )
     }
     @Test
     fun utf8PathUrl(){
         assert(
-            cdnService.getAliyunCdnUrl("测试",1655319562L)
-                    == "https://33.unijzlsx.com/2393042a9de88567353ab551be4540ac/62AA2C0A/测试"
+            cdnService.getAliyunCdnUrl("测试",1655361592L)
+                    == "https://example.com/0b597ddc18b8288e7c84005452e7f901/62AAD038/测试"
         )
     }
 }
