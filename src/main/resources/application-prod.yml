@@ -1,3 +1,6 @@
 kit:
   captcha:
     hcaptcha-secret: ${HCAPTCHA_SECRET}
+sentry:
+  dsn: ${SENTRY_SDN}
+  traces-sample-rate: 1.0
