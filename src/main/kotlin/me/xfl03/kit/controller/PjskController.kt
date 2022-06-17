@@ -30,4 +30,9 @@ class PjskController {
 
         return DownloadResponse(cdnService.getAliyunCdnUrl(name))
     }
+
+//    @RequestMapping("/pd", method = [RequestMethod.OPTIONS])
+//    fun downloadOption():String {
+//        return "Oh my dear CORS preflight"
+//    }
 }
