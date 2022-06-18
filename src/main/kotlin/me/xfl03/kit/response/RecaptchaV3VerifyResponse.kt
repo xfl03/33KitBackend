@@ -8,7 +8,7 @@ import java.util.Date
 data class RecaptchaV3VerifyResponse(
     var success: Boolean,
     var score: Number?,
-    var action: String,
+    var action: String?,
     @JsonProperty("challenge_ts")
     var challengeTs: Date?,
     var hostname: String?,
