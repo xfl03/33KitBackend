@@ -22,7 +22,7 @@ class CaptchaService {
     fun checkRecaptchaV3(token: String): Boolean {
         val res = post<RecaptchaV3VerifyResponse>(
             "https://www.recaptcha.net/recaptcha/api/siteverify",
-            data = mapOf("response" to token, "secret" to captchaConfig.hcaptchaSecret)
+            data = mapOf("response" to token, "secret" to captchaConfig.recaptchaSecret)
         )
         val success = res?.success ?: false
         val score = res?.score ?: 0
