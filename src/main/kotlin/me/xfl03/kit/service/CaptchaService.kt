@@ -19,13 +19,14 @@ class CaptchaService {
         return res?.success ?: false
     }
 
-    fun checkRecaptchaV3(token: String): Boolean {
+    fun checkRecaptchaV3(token: String): Pair<Boolean, Number> {
         val res = post<RecaptchaV3VerifyResponse>(
             "https://www.recaptcha.net/recaptcha/api/siteverify",
             data = mapOf("response" to token, "secret" to captchaConfig.recaptchaSecret)
         )
-        val success = res?.success ?: false
+        var success = res?.success ?: false
         val score = res?.score ?: 0
-        return success && (score.toDouble() >= 0.33)
+        if (score.toDouble() < captchaConfig.recaptchaScoreThreshold.toDouble()) success = false
+        return Pair(success, score)
     }
 }

@@ -8,5 +8,6 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConfigurationProperties(prefix = "kit.captcha")
 data class CaptchaConfig(
     val hcaptchaSecret: String,
-    val recaptchaSecret: String
+    val recaptchaSecret: String,
+    val recaptchaScoreThreshold: Number
 )
