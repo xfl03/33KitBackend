@@ -1,1 +1,1 @@
-rootProject.name = "33kit"
+rootProject.name = "33Kit"

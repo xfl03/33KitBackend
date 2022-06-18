@@ -24,8 +24,14 @@ class PjskController {
         if (name.contains("/") || !(name.endsWith(".apk") || name.endsWith(".ipa"))) {
             throw ForbiddenException("Filename not allowed")
         }
-        if (!captchaService.checkHcaptcha(downloadRequest.token)) {
-            throw ForbiddenException("Captcha not success")
+        if (downloadRequest.token == null && downloadRequest.recaptchaToken == null) {
+            throw ForbiddenException("Captcha needed")
+        }
+        if (downloadRequest.recaptchaToken != null && !captchaService.checkRecaptchaV3(downloadRequest.recaptchaToken)) {
+            throw ForbiddenException("Recaptcha not success")
+        }
+        if (downloadRequest.token != null && !captchaService.checkHcaptcha(downloadRequest.token)) {
+            throw ForbiddenException("Hcaptcha not success")
         }
 
         return DownloadResponse(cdnService.getAliyunCdnUrl(name))
