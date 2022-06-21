@@ -21,12 +21,14 @@ class PjskTests {
         mockMvc.perform(
             MockMvcRequestBuilders.post("/pd")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
+                .content(
+                    """
                     {
                         "filename": "test.apk",
                         "token": "10000000-aaaa-bbbb-cccc-000000000001"
                     }
-                """.trimIndent())
+                    """.trimIndent()
+                )
         ).andExpect(MockMvcResultMatchers.status().isOk)
     }
 
@@ -35,12 +37,14 @@ class PjskTests {
         mockMvc.perform(
             MockMvcRequestBuilders.post("/pd")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
+                .content(
+                    """
                     {
                         "filename": "test",
                         "token": "10000000-aaaa-bbbb-cccc-000000000001"
                     }
-                """.trimIndent())
+                    """.trimIndent()
+                )
         ).andExpect(MockMvcResultMatchers.status().isForbidden)
     }
 
@@ -49,12 +53,21 @@ class PjskTests {
         mockMvc.perform(
             MockMvcRequestBuilders.post("/pd")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("""
+                .content(
+                    """
                     {
                         "filename": "test.apk",
                         "token": "10000000-aaaa-bbbb-cccc-000000000003"
                     }
-                """.trimIndent())
+                    """.trimIndent()
+                )
         ).andExpect(MockMvcResultMatchers.status().isForbidden)
+    }
+
+    @Test
+    fun index() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/pi")
+        ).andExpect(MockMvcResultMatchers.status().isTemporaryRedirect)
     }
 }

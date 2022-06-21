@@ -6,9 +6,12 @@ import me.xfl03.kit.response.DownloadResponse
 import me.xfl03.kit.service.CaptchaService
 import me.xfl03.kit.service.CdnService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.servlet.view.RedirectView
 import javax.servlet.http.HttpServletResponse
 
 @RestController
@@ -41,8 +44,10 @@ class PjskController {
         return DownloadResponse(cdnService.getAliyunCdnUrl(name))
     }
 
-//    @RequestMapping("/pd", method = [RequestMethod.OPTIONS])
-//    fun downloadOption():String {
-//        return "Oh my dear CORS preflight"
-//    }
+    @GetMapping("/pi")
+    fun index(): RedirectView {
+        val ret = RedirectView(cdnService.getAliyunCdnUrl("pjsk-download.json"))
+        ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
+        return ret
+    }
 }
