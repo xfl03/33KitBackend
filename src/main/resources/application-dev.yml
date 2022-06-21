@@ -2,6 +2,7 @@ kit:
   captcha:
     hcaptcha-secret: "0x0000000000000000000000000000000000000000"
     recaptcha-secret: "Test Key Not Found"
+    recaptcha-score-threshold: 0.33
   cdn:
     aliyun-domain: "example.com"
     aliyun-key: "example"

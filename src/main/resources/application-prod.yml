@@ -2,6 +2,7 @@ kit:
   captcha:
     hcaptcha-secret: ${HCAPTCHA_SECRET}
     recaptcha-secret: ${RECAPTCHA_SECRET}
+    recaptcha-score-threshold: ${RECAPTCHA_THRESHOLD}
   cdn:
     aliyun-domain: "33.unijzlsx.com"
     aliyun-key: ${CDN_AUTH_KEY}

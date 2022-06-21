@@ -3,6 +3,3 @@ server:
 spring:
   profiles:
     active: "dev"
-kit:
-  captcha:
-    recaptcha-score-threshold: 0.33
