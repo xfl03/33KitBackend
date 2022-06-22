@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service
 class InternalService {
     @Autowired
     lateinit var ossService: OssService
+
     @Autowired
     lateinit var internalConfig: InternalConfig
 

@@ -3,8 +3,8 @@ package me.xfl03.kit.service
 import com.aliyun.oss.HttpMethod
 import com.aliyun.oss.OSSClientBuilder
 import com.aliyun.oss.model.GeneratePresignedUrlRequest
-import com.fasterxml.jackson.databind.ObjectMapper
 import me.xfl03.kit.config.CloudConfig
+import me.xfl03.kit.config.jsonMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.io.InputStream
@@ -26,8 +26,6 @@ class OssService {
     private val bucket by lazy {
         cloudConfig.aliyunOssBucket
     }
-
-    private val jsonMapper = ObjectMapper()
 
     fun uploadFile(`is`: InputStream, path: String) {
         ossClient.putObject(bucket, path, `is`)
