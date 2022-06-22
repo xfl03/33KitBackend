@@ -60,7 +60,11 @@ class InternalController {
     ): String {
         internalService.checkAccess(key, secret)
         try {
-            return ossService.getSignedUrl(getPjskFilename(server, version), HttpMethod.PUT)
+            return ossService.getSignedUrl(
+                getPjskFilename(server, version),
+                HttpMethod.PUT,
+                "application/vnd.android.package-archive"
+            )
         } catch (e: Exception) {
             return e.toString()
         }

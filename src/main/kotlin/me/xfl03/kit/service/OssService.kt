@@ -43,11 +43,11 @@ class OssService {
         return jsonMapper.readValue(obj.objectContent, type)
     }
 
-    fun getSignedUrl(path: String, method: HttpMethod): String {
+    fun getSignedUrl(path: String, method: HttpMethod, contentType: String = "application/octet-stream"): String {
         val request = GeneratePresignedUrlRequest(bucket, path, HttpMethod.PUT)
         val expiration = Date(Date().time + 3600 * 1000)
         request.expiration = expiration
-        request.contentType = "application/octet-stream"
+        request.contentType = contentType
         val signedUrl = ossClient.generatePresignedUrl(request)
         println(signedUrl)
         return signedUrl.toString()
