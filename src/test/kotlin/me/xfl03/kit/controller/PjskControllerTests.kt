@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PjskTests {
+class PjskControllerTests {
     @Autowired(required = false)
     lateinit var mockMvc: MockMvc
 
