@@ -4,8 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 
 @ConstructorBinding
-@ConfigurationProperties(prefix = "kit.cdn")
-data class CdnConfig(
-    val aliyunKey: String,
-    val aliyunDomain: String,
+@ConfigurationProperties(prefix = "kit.internal")
+data class InternalConfig(
+    val accessKey: String,
+    val accessSecret: String,
 )

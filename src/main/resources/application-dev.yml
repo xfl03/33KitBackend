@@ -3,6 +3,13 @@ kit:
     hcaptcha-secret: "0x0000000000000000000000000000000000000000"
     recaptcha-secret: "Test Key Not Found"
     recaptcha-score-threshold: 0.33
-  cdn:
-    aliyun-domain: "example.com"
-    aliyun-key: "example"
+  cloud:
+    aliyun-cdn-domain: "example.com"
+    aliyun-cdn-key: "example"
+    aliyun-access-key: "foo"
+    aliyun-access-secret: "bar"
+    aliyun-oss-bucket: "foo"
+    aliyun-oss-endpoint: "bar"
+  internal:
+    access-key: "foo"
+    access-secret: "bar"

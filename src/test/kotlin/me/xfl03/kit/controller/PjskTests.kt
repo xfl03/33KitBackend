@@ -33,7 +33,7 @@ class PjskTests {
     }
 
     @Test
-    fun downloadFilenameFail() {
+    fun downloadFilenameFail1() {
         mockMvc.perform(
             MockMvcRequestBuilders.post("/pd")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -41,6 +41,22 @@ class PjskTests {
                     """
                     {
                         "filename": "test",
+                        "token": "10000000-aaaa-bbbb-cccc-000000000001"
+                    }
+                    """.trimIndent()
+                )
+        ).andExpect(MockMvcResultMatchers.status().isForbidden)
+    }
+
+    @Test
+    fun downloadFilenameFail2() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.post("/pd")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    """
+                    {
+                        "filename": "/test/ftest.apk",
                         "token": "10000000-aaaa-bbbb-cccc-000000000001"
                     }
                     """.trimIndent()

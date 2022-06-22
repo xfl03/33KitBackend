@@ -3,9 +3,16 @@ kit:
     hcaptcha-secret: ${HCAPTCHA_SECRET}
     recaptcha-secret: ${RECAPTCHA_SECRET}
     recaptcha-score-threshold: ${RECAPTCHA_THRESHOLD}
-  cdn:
-    aliyun-domain: "33.unijzlsx.com"
-    aliyun-key: ${CDN_AUTH_KEY}
+  cloud:
+    aliyun-cdn-domain: "33.unijzlsx.com"
+    aliyun-cdn-key: ${CDN_AUTH_KEY}
+    aliyun-access-key: ${ALIYUN_ACCESS_KEY}
+    aliyun-access-secret: ${ALIYUN_ACCESS_SECRET}
+    aliyun-oss-bucket: ${ALIYUN_OSS_BUCKET}
+    aliyun-oss-endpoint: ${ALIYUN_OSS_ENDPOINT}
+  internal:
+    access-key: ${INTERNAL_ACCESS_KEY}
+    access-secret: ${INTERNAL_ACCESS_SECRET}
 sentry:
   dsn: ${SENTRY_SDN}
   traces-sample-rate: 1.0

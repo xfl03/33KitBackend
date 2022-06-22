@@ -1,10 +1,13 @@
 package me.xfl03.kit.controller
 
+import me.xfl03.kit.config.pjskDownloadFile
 import me.xfl03.kit.exception.ForbiddenException
 import me.xfl03.kit.request.DownloadRequest
 import me.xfl03.kit.response.DownloadResponse
 import me.xfl03.kit.service.CaptchaService
 import me.xfl03.kit.service.CdnService
+import me.xfl03.kit.util.isMobilePackageFile
+import me.xfl03.kit.util.isPathContainsDir
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -25,7 +28,7 @@ class PjskController {
     @PostMapping("/pd")
     fun download(response: HttpServletResponse, @RequestBody downloadRequest: DownloadRequest): DownloadResponse {
         val name = downloadRequest.filename
-        if (name.contains("/") || !(name.endsWith(".apk") || name.endsWith(".ipa"))) {
+        if (isPathContainsDir(name) || !isMobilePackageFile(name)) {
             throw ForbiddenException("Filename not allowed")
         }
         if (downloadRequest.token == null && downloadRequest.recaptchaToken == null) {
@@ -46,7 +49,7 @@ class PjskController {
 
     @GetMapping("/pi")
     fun index(): RedirectView {
-        val ret = RedirectView(cdnService.getAliyunCdnUrl("pjsk-download.json"))
+        val ret = RedirectView(cdnService.getAliyunCdnUrl(pjskDownloadFile))
         ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
         return ret
     }

@@ -26,7 +26,8 @@ dependencies {
 	kapt("org.springframework.boot:spring-boot-configuration-processor")
 	implementation("com.squareup.okhttp3:okhttp:4.10.0")
 	implementation("commons-codec:commons-codec:1.15")
-	implementation("io.sentry:sentry-spring-boot-starter:6.1.0")
+	implementation("io.sentry:sentry-spring-boot-starter:6.1.2")
+	implementation("com.aliyun.oss:aliyun-sdk-oss:3.15.0")
 }
 
 kapt {

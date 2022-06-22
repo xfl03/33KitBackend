@@ -26,14 +26,15 @@ class CaptchaTests {
 
     @Test
     fun jacksonReadJson() {
-        val json = """
+        val json =
+            """
             {
                 "success": true,
                 "credit": false,
                 "hostname": "dummy-key-pass",
                 "challenge_ts": "2022-06-14T19:13:23.758Z"
             }
-        """.trimIndent()
+            """.trimIndent()
         assertDoesNotThrow {
             val obj = mapper.readValue<HcaptchaVerifyResponse>(json)
             assert(obj.success)
