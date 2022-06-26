@@ -1,6 +1,7 @@
 package me.xfl03.kit.controller
 
 import me.xfl03.kit.config.pjskDownloadFile
+import me.xfl03.kit.config.pjskPredictFile
 import me.xfl03.kit.exception.ForbiddenException
 import me.xfl03.kit.request.DownloadRequest
 import me.xfl03.kit.response.DownloadResponse
@@ -50,6 +51,13 @@ class PjskController {
     @GetMapping("/pi")
     fun index(): RedirectView {
         val ret = RedirectView(cdnService.getAliyunCdnUrl(pjskDownloadFile))
+        ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
+        return ret
+    }
+
+    @GetMapping("/pred")
+    fun predict(): RedirectView {
+        val ret = RedirectView(cdnService.getAliyunCdnUrl(pjskPredictFile))
         ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
         return ret
     }

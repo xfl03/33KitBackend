@@ -86,4 +86,11 @@ class PjskControllerTests {
             MockMvcRequestBuilders.get("/pi")
         ).andExpect(MockMvcResultMatchers.status().isTemporaryRedirect)
     }
+
+    @Test
+    fun predict() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/pred")
+        ).andExpect(MockMvcResultMatchers.status().isTemporaryRedirect)
+    }
 }
