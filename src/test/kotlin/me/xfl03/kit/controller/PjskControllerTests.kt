@@ -93,4 +93,25 @@ class PjskControllerTests {
             MockMvcRequestBuilders.get("/pred")
         ).andExpect(MockMvcResultMatchers.status().isTemporaryRedirect)
     }
+
+    @Test
+    fun eventFinal() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/final/62")
+        ).andExpect(MockMvcResultMatchers.status().isTemporaryRedirect)
+    }
+
+    @Test
+    fun eventFinalFailed() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/final/-62")
+        ).andExpect(MockMvcResultMatchers.status().isForbidden)
+    }
+
+    @Test
+    fun eventFinalFailed2() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/final/6.2")
+        ).andExpect(MockMvcResultMatchers.status().isForbidden)
+    }
 }

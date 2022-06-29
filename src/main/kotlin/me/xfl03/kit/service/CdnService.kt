@@ -3,7 +3,9 @@ package me.xfl03.kit.service
 import me.xfl03.kit.config.CloudConfig
 import org.apache.commons.codec.digest.DigestUtils
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.servlet.view.RedirectView
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
@@ -24,5 +26,11 @@ class CdnService {
         val text = "${cloudConfig.aliyunCdnKey}$pathEncoded$timestampText"
         val md5 = DigestUtils.md5Hex(text).lowercase()
         return Pair(md5, timestampText)
+    }
+
+    fun redirectTo(path: String): RedirectView {
+        val ret = RedirectView(getAliyunCdnUrl(path))
+        ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
+        return ret
     }
 }

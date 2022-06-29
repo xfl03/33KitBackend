@@ -10,8 +10,8 @@ import me.xfl03.kit.service.CdnService
 import me.xfl03.kit.util.isMobilePackageFile
 import me.xfl03.kit.util.isPathContainsDir
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -50,15 +50,22 @@ class PjskController {
 
     @GetMapping("/pi")
     fun index(): RedirectView {
-        val ret = RedirectView(cdnService.getAliyunCdnUrl(pjskDownloadFile))
-        ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
-        return ret
+        return cdnService.redirectTo(pjskDownloadFile)
     }
 
     @GetMapping("/pred")
     fun predict(): RedirectView {
-        val ret = RedirectView(cdnService.getAliyunCdnUrl(pjskPredictFile))
-        ret.setStatusCode(HttpStatus.TEMPORARY_REDIRECT)
-        return ret
+        return cdnService.redirectTo(pjskPredictFile)
+    }
+
+    @GetMapping("/final/{eventId}")
+    fun eventFinal(@PathVariable eventId: String): RedirectView {
+        try {
+            val id = eventId.toInt()
+            if (id < 0) throw RuntimeException()
+        } catch (_: Exception) {
+            throw ForbiddenException("Event id not correct")
+        }
+        return cdnService.redirectTo("final-sample-${eventId}.json")
     }
 }
