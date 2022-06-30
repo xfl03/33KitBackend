@@ -105,13 +105,13 @@ class PjskControllerTests {
     fun eventFinalFailed() {
         mockMvc.perform(
             MockMvcRequestBuilders.get("/final/-62")
-        ).andExpect(MockMvcResultMatchers.status().isForbidden)
+        ).andExpect(MockMvcResultMatchers.status().isBadRequest)
     }
 
     @Test
     fun eventFinalFailed2() {
         mockMvc.perform(
             MockMvcRequestBuilders.get("/final/6.2")
-        ).andExpect(MockMvcResultMatchers.status().isForbidden)
+        ).andExpect(MockMvcResultMatchers.status().isBadRequest)
     }
 }
