@@ -60,6 +60,11 @@ class PjskController {
         return cdnService.redirectTo(pjskPredictFile)
     }
 
+    @GetMapping("/final")
+    fun listEventFinal(): RedirectView {
+        return cdnService.redirectTo("final-sample.json")
+    }
+
     @GetMapping("/final/{eventId}")
     fun eventFinal(@PathVariable eventId: String): RedirectView {
         if (!isNaturalNumber(eventId)) {
