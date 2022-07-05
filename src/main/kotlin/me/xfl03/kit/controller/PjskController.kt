@@ -60,6 +60,11 @@ class PjskController {
         return cdnService.redirectTo(pjskPredictFile)
     }
 
+    @GetMapping("/cheer-pred")
+    fun cheerfulPredict(): RedirectView {
+        return cdnService.redirectTo("cheerful_predict.json")
+    }
+
     @GetMapping("/final")
     fun listEventFinal(): RedirectView {
         return cdnService.redirectTo("final-sample.json")
