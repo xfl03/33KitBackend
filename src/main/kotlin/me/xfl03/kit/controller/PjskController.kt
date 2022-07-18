@@ -78,6 +78,14 @@ class PjskController {
         return cdnService.redirectTo("final-sample/${eventId}.json")
     }
 
+    @GetMapping("/user/{userId}")
+    fun listUserEvent(@PathVariable userId: String): RedirectView {
+        if (!isNaturalNumber(userId)) {
+            throw BadRequestException("User id not correct")
+        }
+        return cdnService.redirectTo("user-data/${userId}.json")
+    }
+
     @GetMapping("/user/{userId}/{eventId}")
     fun userEvent(@PathVariable userId: String, @PathVariable eventId: String): RedirectView {
         if (!isNaturalNumber(userId)) {
