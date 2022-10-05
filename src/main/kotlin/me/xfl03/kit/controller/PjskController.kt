@@ -96,4 +96,15 @@ class PjskController {
         }
         return cdnService.redirectTo("user-data/${userId}/${eventId}.json")
     }
+
+    @GetMapping("/event/{eventId}/{rank}")
+    fun eventRank(@PathVariable eventId: String, @PathVariable rank: String): RedirectView {
+        if (!isNaturalNumber(eventId)) {
+            throw BadRequestException("Event id not correct")
+        }
+        if (!isNaturalNumber(rank)) {
+            throw BadRequestException("Rank not correct")
+        }
+        return cdnService.redirectTo("event-data/${eventId}/${rank}.json")
+    }
 }
