@@ -6,4 +6,4 @@ Kotlin Spring Boot Backend for 33 Kit.
 - Kotlin
 - Gradle 
 - Docker
-- Serverless Devs
+- GitHub Actions

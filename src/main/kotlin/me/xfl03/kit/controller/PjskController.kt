@@ -107,4 +107,17 @@ class PjskController {
         }
         return cdnService.redirectTo("event-data/${eventId}/${rank}.json")
     }
+
+    @GetMapping("/cheerful")
+    fun listCheerful(): RedirectView {
+        return cdnService.redirectTo("cheerful-sample.json")
+    }
+
+    @GetMapping("/cheerful/{eventId}")
+    fun cheerful(@PathVariable eventId: String): RedirectView {
+        if (!isNaturalNumber(eventId)) {
+            throw BadRequestException("Event id not correct")
+        }
+        return cdnService.redirectTo("cheerful-sample/${eventId}.json")
+    }
 }
