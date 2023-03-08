@@ -15,4 +15,4 @@ kit:
     access-secret: ${INTERNAL_ACCESS_SECRET}
 sentry:
   dsn: ${SENTRY_SDN}
-  traces-sample-rate: 1.0
+  traces-sample-rate: 0.1
