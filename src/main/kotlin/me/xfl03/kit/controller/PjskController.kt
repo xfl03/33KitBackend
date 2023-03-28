@@ -120,4 +120,9 @@ class PjskController {
         }
         return cdnService.redirectTo("cheerful-sample/${eventId}.json")
     }
+
+    @GetMapping("/music-meta")
+    fun getMusicMeta(): RedirectView {
+        return cdnService.redirectTo("music_metas.json")
+    }
 }
