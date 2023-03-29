@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.7"
+	id("org.springframework.boot") version "3.0.5"
 	id("io.spring.dependency-management") version "1.1.0"
-	kotlin("jvm") version "1.8.0"
-	kotlin("plugin.spring") version "1.8.0"
-	kotlin("kapt") version "1.8.0"
+	kotlin("jvm") version "1.8.10"
+	kotlin("plugin.spring") version "1.8.10"
+	kotlin("kapt") version "1.8.10"
 }
 
 group = "me.xfl03"
@@ -24,10 +24,11 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	kapt("org.springframework.boot:spring-boot-configuration-processor")
+
 	implementation("com.squareup.okhttp3:okhttp:4.10.0")
 	implementation("commons-codec:commons-codec:1.15")
-	implementation("io.sentry:sentry-spring-boot-starter:6.11.0")
-	implementation("com.aliyun.oss:aliyun-sdk-oss:3.16.0")
+	implementation("io.sentry:sentry-spring-boot-starter:6.16.0")
+	implementation("com.aliyun.oss:aliyun-sdk-oss:3.16.1")
 }
 
 kapt {

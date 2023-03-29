@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.view.RedirectView
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletResponse
 
 @RestController
 class PjskController {
@@ -124,5 +124,10 @@ class PjskController {
     @GetMapping("/music-meta")
     fun getMusicMeta(): RedirectView {
         return cdnService.redirectTo("music_metas.json")
+    }
+
+    @GetMapping("/top-deck")
+    fun getTopDeck(): RedirectView {
+        return cdnService.redirectTo("top-deck.json")
     }
 }
